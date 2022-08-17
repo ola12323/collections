@@ -35,7 +35,7 @@ import org.springframework.security.core.userdetails.UserDetails;
         public String getPhotosImagePath() {
             if (photos == null || id == null) return null;
 
-            return "/images/user-photos/" + id + "/" + photos;
+            return "/images/" + id + "/" + photos;
         }
         public void setPhotos(String photos) {
             this.photos = photos;
