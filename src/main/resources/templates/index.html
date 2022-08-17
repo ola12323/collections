@@ -8,6 +8,8 @@
     <link href='https://css.gg/lock-unlock.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="../static/css/navbar.css" th:href="@{/css/navbar.css}">
     <link th:href="@{/css/navbar.css}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../static/css/card.css" th:href="@{/css/card.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/productcard.css" th:href="@{/css/productcard.css}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -22,9 +24,84 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </head>
-
-<body>
 <div th:insert="navbar :: navbar" />
-Hello World
+<body style="margin-left: 30px">
+
+
+<div class = "mb-4">
+    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
+            data-bs-target="#showTags" aria-expanded="false" aria-controls="showTags">
+        tagsCloud
+
+    </button>
+    <div class="collapse mb-4" id = "showTags">
+        <div th:each="tag : ${tags}">
+            <a th:href="@{'/showByTag/' + ${tag.id}}" th:text="${tag.tagName}" />
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<img src="../static/images/largestcol.png" th:src="@{/images/largestcol.png}" alt="Media Resource"/>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+        <div class="card card-custom bg-white border-white border-0">
+            <div class="card-custom-img" th:style="'background-image:url('+ ${maxSizeCollection.getPhotosImagePath()}+');'"></div>
+            <div class="card-custom-avatar">
+                <img class="img-fluid"  th:src="@{${maxSizeCollection.owner.getPhotosImagePath()}}" alt="Avatar" />
+            </div>
+            <div class="card-body" style="overflow-y: auto">
+                <h3 th:text="${maxSizeCollection.name}">
+
+                </h3>
+                <h4 class="card-title"
+                    th:text="${maxSizeCollection.getDescription()}">
+                </h4>
+            </div>
+            <div class="card-footer"style="background: inherit; border-color: inherit;">
+                <a th:href="@{'/collection/' + ${maxSizeCollection.id}}" class="btn btn-dark"> show Collection </a>
+                <a th:href="@{'/personalPage/' + ${maxSizeCollection.owner.id}}" class="btn btn-dark"> showOwner </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<td th:if="${lastAddedItems}">
+    <img src="../static/images/lai.png" th:src="@{/images/lai.png}" alt="Media Resource"/>
+    <div class="row row-cols-1 row-cols-md-6 g-6">
+        <div th:each="item : ${lastAddedItems}">
+            <div class="card1">
+                <div class="card-banner">
+                    <p class="category-tag popular" th:text="${item.collection.theme}" ></p>
+                    <img class="banner-img" th:src="${item.getPhotosImagePath()}" alt=''>
+                </div>
+                <div class="card-body1" style="overflow-y: auto">
+                    <p class="blog-hashtag" th:text="${item.tag}"></p>
+                    <h2 class="blog-title" th:text="${item.name}"></h2>
+                </div>
+                <div class="card-profile">
+                    <img class="profile-img" th:src="${item.collection.owner.getPhotosImagePath()}" alt=''>
+                    <div class="card-profile-info">
+                        <h3 class="profile-name" th:text="${item.collection.owner.username}"></h3>
+                        <div sec:authorize="isAuthenticated()">
+                            <a class="btn btn-outline-dark" th:href="@{'/likeItem/'+${item.id}}" role="button">
+
+                                <i th:class="${item.getLikes().contains(#authentication.getPrincipal())} ? 'fa fa-heart':
+                                                'fa fa-heart-o'"></i>
+                                <div style="left:30px;top: 5px" th:text="${item.getLikes().size}"></div>
+                            </a>
+                            <a class="btn btn-outline-dark" th:href="@{'/'+${item.id}+'/comments'}" role="button" th:text="comments +' '+ ${item.comments.size}"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
 </body>
 </html>
