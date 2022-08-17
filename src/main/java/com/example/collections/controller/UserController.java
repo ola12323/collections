@@ -83,7 +83,7 @@ public class UserController {
         repo.setPhoto(user.getUsername(), fileName);
         User savedUser = repo.save(user);
 
-        String uploadDir = "src/main/resources/static/images/user-photos/" + savedUser.getId();
+        String uploadDir = "images/user-photos/" + savedUser.getId();
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
