@@ -58,7 +58,7 @@ public class UserController {
             //repos.setPhoto(fileName,collection.getId());
             Collection savedUser = repos.save(collection);
 
-            String uploadDir = "user-photos/" + savedUser.getId();
+            String uploadDir = "resources/static/images/user-photos/" + savedUser.getId();
 
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
             collectionService.saveCollection(collection);
@@ -83,7 +83,7 @@ public class UserController {
         repo.setPhoto(user.getUsername(), fileName);
         User savedUser = repo.save(user);
 
-        String uploadDir = "user-photos/" + savedUser.getId();
+        String uploadDir = "src/main/resources/static/images/user-photos/" + savedUser.getId();
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
