@@ -37,11 +37,13 @@ nav .nav-items li{
     padding: 0 15px;
 }
 nav .nav-items li a{
-    color: #fff;
+    color: #ff3d00;
+    -webkit-text-stroke: 0.5px #ff3d00;
     font-size: 18px;
     font-weight: 500;
     text-decoration: none;
 }
+
 nav .nav-items li a:hover{
     color: #ff3d00;
 }
@@ -245,3 +247,4 @@ nav .logo.space{
 .content .space{
     margin: 10px 0;
 }
+

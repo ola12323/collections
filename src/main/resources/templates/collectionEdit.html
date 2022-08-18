@@ -23,16 +23,16 @@
 </head>
 <body style="margin-left: 30px">
 <div th:insert="navbar :: navbar" />
-<img src="../static/images/ecollection.png" th:src="@{/images/ecollection.png}" alt="Media Resource"/>
+<h2 th:text="#{colEdit}"></h2>
     <form th:action="@{'/collectionEdit/'+${col.id}}" method="post" enctype="multipart/form-data">
         <div class="mb-3">
-            <label for="editName" class="form-label">collection name</label>
+            <label for="editName" class="form-label" th:text="#{colName}"></label>
             <input type="text" class="form-control w-75 ${(nameError??)?string('is-invalid','')}"
                    value = "" name="name" id = "editName">
 
         </div>
         <div class = "mb-3">
-            <label for="editDescription" class="form-label">collection description</label>
+            <label for="editDescription" class="form-label"th:text="#{colDescription}"></label>
             <input type="text" class="form-control w-75"
                    value = ""
                    name="description" id ="editDescription">
@@ -45,7 +45,7 @@
         </div>
         <p></p>
         <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
-        <button type="submit" class="button">edit</button>
+        <button type="submit" class="button"th:text="#{edit}"></button>
     </form>
 </body>
 </html>

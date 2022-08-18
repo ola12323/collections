@@ -19,23 +19,21 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-    <script>
-        $(function() {
-            $(".toggle").on("click", function() {
-                if ($(".item").hasClass("active")) {
-                    $(".item").removeClass("active");
-                } else {
-                    $(".item").addClass("active");
-                }
-            });
+</head>
+<script>
+    $(function() {
+        $(".toggle").on("click", function() {
+            if ($(".item").hasClass("active")) {
+                $(".item").removeClass("active");
+            } else {
+                $(".item").addClass("active");
+            }
         });
-    </script>
+    });
+</script>
 </head>
 <body>
 <nav th:fragment="navbar" >
-    <div class="menu-icon">
-        <span class="fas fa-bars"></span>
-    </div>
     <div class="logo">
         CollectionsApp
     </div>
@@ -50,6 +48,15 @@
         <div sec:authorize="hasAuthority('ADMIN')">
             <li class="nav-item"><a href="/user">User list</a></li>
         </div>
+        <li>
+            <a  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+               th:text="#{changeLang}"/>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li class="nav-item2"><a th:href="${'?locale=en'}">EN</a></li>
+                <li class="nav-item2"><a th:href="${'?locale=pl'}">PL</a></li>
+            </ul>
+        </li>
         <div sec:authorize="isAuthenticated()">
             <li class="nav-item"><a th:href="@{'/personalPage/'+ ${#authentication.getPrincipal().getId()}}">Account</a></li>
         </div>

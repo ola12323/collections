@@ -34,8 +34,8 @@
 </style>
     <body style="margin-left: 30px">
         <div th:insert="navbar :: navbar" />
-    <img src="../static/images/comments.png.png" th:src="@{/images/comments.png}" alt="Media Resource"/>
-    <h3 comments th:text="${item.name}" />
+        <h2 th:text="#{comments}"></h2>
+    <h3 th:text="${item.name}" />
         <div class="comments "id="comments">
             <div th:each="comment: ${comments}">
             <div class="card mb-1">
@@ -50,8 +50,8 @@
     <div sec:authorize="isAuthenticated()">
         <div class = "mb-4 mt-4">
             <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#addNewComment" aria-expanded="false" aria-controls="addNewComment">
-                addComment
+                    data-bs-target="#addNewComment" aria-expanded="false" aria-controls="addNewComment"
+                th:text="#{addComment}">
             </button>
         </div>
         <div class="collapse mb-4" id = "addNewComment">
@@ -61,13 +61,13 @@
                         <div class="form-floating">
                             <input type="text" class="form-control"
                                    name ="comment" id="putComment" />
-                            <label for="putComment">your Comment</label>
+                            <label for="putComment"th:text="#{yourComment}"></label>
 
                         </div>
                     </div>
                     <div class="col-md">
                         <div class="form-floating">
-                            <button type="submit" class="btn btn-dark p-3">addComment</button>
+                            <button type="submit" class="btn btn-dark p-3"th:text="#{addComment}"></button>
                         </div>
                     </div>
                 </div>

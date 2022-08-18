@@ -8,12 +8,16 @@ import com.example.collections.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CollectionService {
     @Autowired
     private CollectionsRepository collectionsRepo;
     @Autowired
     private ItemRepository itemRepo;
+    private List<Collection> largestCol = new ArrayList<>();
 
     public Iterable<Item> getItems(Collection col) {
         return itemRepo.findAllByCollection(col);
@@ -45,6 +49,10 @@ public class CollectionService {
                 maxSize = col;
         }
         return maxSize;
+    }
+    public List<Collection> getLargestCol() {
+        largestCol = collectionsRepo.getLargestCollections();
+        return this.largestCol;
     }
 
     public void saveCollection(Collection collection) {

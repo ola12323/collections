@@ -31,7 +31,7 @@
 <div th:insert="navbar :: navbar" />
 
 </div>
-<img src="../static/images/itbytags.png.png" th:src="@{/images/itbytags.png}" alt="Media Resource"/>
+<h2 th:text="#{itemTag}">>
 <div th:each="item : ${items}">
 <div class="row row-cols-1 row-cols-md-6 g-6">
     <div class="card1">
@@ -53,7 +53,7 @@
                                                 'fa fa-heart-o'"></i>
                             <div style="left:30px;top: 5px" th:text="${item.getLikes().size}"></div>
                         </a>
-                        <a class="btn btn-outline-dark" th:href="@{'/'+${item.id}+'/comments'}" role="button" th:text="comments +' '+ ${item.comments.size}"></a>
+                        <a class="btn btn-outline-dark" th:href="@{'/'+${item.id}+'/comments'}" role="button" th:text="#{comments} +' '+ ${item.comments.size}"></a>
                     </div>
                 </div>
             </div>

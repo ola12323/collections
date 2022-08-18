@@ -3,9 +3,11 @@ import com.example.collections.service.CollectionService;
 import com.example.collections.service.ItemService;
 import com.example.collections.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class IndexController {
@@ -20,7 +22,7 @@ public class IndexController {
         model.addAttribute("maxSizeCollection", collectionService.getMaxSizeCollection());
         model.addAttribute("tags", tagService.getAllTags());
         model.addAttribute("lastAddedItems", itemService.getLastAddedItems());
-        model.addAttribute("collections", collectionService.getAllCollections());
+        model.addAttribute("collection", collectionService.getLargestCol());
         return "index";
     }
 

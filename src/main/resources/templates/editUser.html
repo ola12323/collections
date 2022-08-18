@@ -22,7 +22,7 @@
 </head>
 <body style="margin-left: 30px">
 <div th:insert="navbar :: navbar" />
-    <h3>Edit user</h3>
+    <h3 th:text="#{userEditor}"></h3>
     <form th:action="@{'/user'}" method="post">
         <input type="text" name="username" th:value="${user.username}">
         <div th:each="role : ${roles}">
@@ -32,5 +32,5 @@
         </div>
         <input type="hidden" name="userId" th:value="${user.id}">
         <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
-        <button type="submit" class="btn btn-primary mb-3">edit</button>
+        <button type="submit" class="btn btn-primary mb-3" th:text="#{edit}"></button>
     </form>

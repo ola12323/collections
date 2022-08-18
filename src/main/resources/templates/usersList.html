@@ -27,17 +27,17 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">username</th>
-            <th scope="col">admin</th>
-            <th scope="col">block</th>
-            <th scope="col">edit</th>
-            <th scope="col">delete</th>
+            <th scope="col"th:text="#{username}"></th>
+            <th scope="col"th:text="#{isAdmin}"></th>
+            <th scope="col"th:text="#{block}"></th>
+            <th scope="col"th:text="#{edit}"></th>
+            <th scope="col"th:text="#{delete}"></th>
         </tr>
         </thead>
         <tbody>
         <div th:each="user : ${users}" >
             <tr>
-                <td><a class="btn btn-outline-secondary" th:href="@{'/personalPage/'+${user.id}}" role="button" th:text="${user.username}"</a></td>
+                <td><a class="btn btn-outline-secondary" th:href="@{'/personalPage/'+${user.id}}" role="button" th:text="${user.username}"></a></td>
                 <td th:text="${user.isAdmin} ? 'Yes' : 'No'"></td>
                 <td>
                     <form th:action="@{'/user/block/'+${user.id}}" method="post">
@@ -47,13 +47,13 @@
                 </td>
                 <td>
                     <form th:action="@{'/user/'+${user.id}}" method="post">
-                    <button type="submit" class="btn btn-outline-secondary">edit</button>
+                    <button type="submit" class="btn btn-outline-secondary"th:text="#{edit}"></button>
                     <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
                     </form>
                 </td>
                 <td>
                     <form th:action="@{'/user/delete/'+${user.id}}" method="post">
-                        <button type="submit" class="btn btn-outline-secondary">delete</button>
+                        <button type="submit" class="btn btn-outline-secondary"th:text="#{delete}"></button>
                         <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
                     </form>
                 </td>

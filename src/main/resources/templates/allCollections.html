@@ -28,7 +28,7 @@
 <body style="margin-left: 30px">
 <div th:insert="navbar :: navbar" />
 <p></p>
-    <img src="../static/images/allcollections.png" th:src="@{/images/allcollections.png}" alt="Media Resource"/>
+<h2 th:text="#{collectionList}"></h2>
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div th:each="col : ${collections}">
                     <div class="col">
@@ -45,11 +45,11 @@
                             </h4>
                              </div>
                         <div class="card-footer"style="background: inherit; border-color: inherit;">
-                            <a th:href="@{'/collection/' + ${col.id}}" class="btn btn-dark"> Show collection </a>
-                         <a th:href="@{'/personalPage/' + ${col.owner.id}}" class="btn btn-dark"> Show owner </a>
+                            <a th:href="@{'/collection/' + ${col.id}}" class="btn btn-dark" th:text="#{showCol}"> </a>
+                         <a th:href="@{'/personalPage/' + ${col.owner.id}}" class="btn btn-dark"th:text="#{showOwner}"> </a>
                          <div th:if="${#authentication.name}==${col.owner.username} or ${#authorization.expression('hasAuthority(''ADMIN'')')}">
-                             <a class="btn btn-outline-dark" th:href="@{'/collectionEdit/'+${col.id}}" role="button">edit</a>
-                            <a class="btn btn-outline-dark" th:href="@{'/deleteCollection/' +${col.id}}" role="button">delete</a>
+                             <a class="btn btn-outline-dark" th:href="@{'/collectionEdit/'+${col.id}}" role="button"th:text="#{edit}"></a>
+                            <a class="btn btn-outline-dark" th:href="@{'/deleteCollection/' +${col.id}}" role="button"th:text="#{delete}"></a>
                         </div>
                         </div>
                     </div>

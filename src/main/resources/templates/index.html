@@ -10,6 +10,7 @@
     <link th:href="@{/css/navbar.css}" type="text/css">
     <link rel="stylesheet" type="text/css" href="../static/css/card.css" th:href="@{/css/card.css}">
     <link rel="stylesheet" type="text/css" href="../static/css/productcard.css" th:href="@{/css/productcard.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/axis.css" th:href="@{/css/axis.css}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -30,8 +31,8 @@
 
 <div class = "mb-4">
     <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
-            data-bs-target="#showTags" aria-expanded="false" aria-controls="showTags">
-        tagsCloud
+            data-bs-target="#showTags" aria-expanded="false" aria-controls="showTags"
+        th:text="#{tagsCloud}">
 
     </button>
     <div class="collapse mb-4" id = "showTags">
@@ -42,34 +43,38 @@
 </div>
 </div>
 </div>
-<img src="../static/images/largestcol.png" th:src="@{/images/largestcol.png}" alt="Media Resource"/>
-
-<div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col">
-        <div class="card card-custom bg-white border-white border-0">
-            <div class="card-custom-img" th:style="'background-image:url('+ ${maxSizeCollection.getPhotosImagePath()}+');'"></div>
-            <div class="card-custom-avatar">
-                <img class="img-fluid"  th:src="@{${maxSizeCollection.owner.getPhotosImagePath()}}" alt="Avatar" />
-            </div>
-            <div class="card-body" style="overflow-y: auto">
-                <h3 th:text="${maxSizeCollection.name}">
-
-                </h3>
-                <h4 class="card-title"
-                    th:text="${maxSizeCollection.getDescription()}">
-                </h4>
-            </div>
-            <div class="card-footer"style="background: inherit; border-color: inherit;">
-                <a th:href="@{'/collection/' + ${maxSizeCollection.id}}" class="btn btn-dark"> show Collection </a>
-                <a th:href="@{'/personalPage/' + ${maxSizeCollection.owner.id}}" class="btn btn-dark"> showOwner </a>
-
+    <h2 th:text="#{largestCol}"></h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div th:each="col : ${collection}">
+        <div class="col">
+            <div class="card card-custom bg-white border-white border-0">
+                <div class="card-custom-img" th:style="'background-image:url('+ ${col.getPhotosImagePath()}+');'"></div>
+                <div class="card-custom-avatar">
+                    <img class="img-fluid"  th:src="@{${col.owner.getPhotosImagePath()}}" alt="Avatar" />
+                </div>
+                <div class="card-body" style="overflow-y: auto">
+                    <h3 th:text="${col.name}">
+                    </h3>
+                    <h4 class="card-title"
+                        th:text="${col.getDescription()}">
+                    </h4>
+                </div>
+                <div class="card-footer"style="background: inherit; border-color: inherit;">
+                    <a th:href="@{'/collection/' + ${col.id}}" class="btn btn-dark"th:text="#{showCol}"> </a>
+                    <a th:href="@{'/personalPage/' + ${col.owner.id}}" class="btn btn-dark"th:text="#{showOwner}"> </a>
+                    <div th:if="${#authentication.name}==${col.owner.username} or ${#authorization.expression('hasAuthority(''ADMIN'')')}">
+                        <a class="btn btn-outline-dark" th:href="@{'/collectionEdit/'+${col.id}}" role="button" th:text="#{edit}"></a>
+                        <a class="btn btn-outline-dark" th:href="@{'/deleteCollection/' +${col.id}}" role="button"th:text="#{delete}"></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 </div>
+</div>
+<h2 th:text="#{lastAddedItems}"></h2>
 <td th:if="${lastAddedItems}">
-    <img src="../static/images/lai.png" th:src="@{/images/lai.png}" alt="Media Resource"/>
     <div class="row row-cols-1 row-cols-md-6 g-6">
         <div th:each="item : ${lastAddedItems}">
             <div class="card1">
@@ -92,7 +97,7 @@
                                                 'fa fa-heart-o'"></i>
                                 <div style="left:30px;top: 5px" th:text="${item.getLikes().size}"></div>
                             </a>
-                            <a class="btn btn-outline-dark" th:href="@{'/'+${item.id}+'/comments'}" role="button" th:text="comments +' '+ ${item.comments.size}"></a>
+                            <a class="btn btn-outline-dark" th:href="@{'/'+${item.id}+'/comments'}" role="button" th:text="#{comments} +' '+ ${item.comments.size}"></a>
                         </div>
                     </div>
                 </div>

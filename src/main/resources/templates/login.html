@@ -24,19 +24,19 @@
 <div th:insert="navbar :: navbar">  </div>
 <div class="wrapper" style = "position:relative; left:900px; top:120px">
     <div class="title-text">
-        <div class="title login">
-            Login Form
+        <div class="title login"
+            th:text="#{login}">
         </div>
-        <div class="title signup">
-            Signup Form
+        <div class="title signup"
+            th:text="#{registration}">
         </div>
     </div>
     <div class="form-container">
         <div class="slide-controls">
             <input type="radio" name="slide" id="login" checked>
             <input type="radio" name="slide" id="signup">
-            <label for="login" class="slide login">Login</label>
-            <label for="signup" class="slide signup">Signup</label>
+            <label for="login" class="slide login" th:text="#{login}"></label>
+            <label for="signup" class="slide signup"th:text="#{registration}"></label>
             <div class="slider-tab"></div>
         </div>
         <div class="form-inner">
@@ -46,9 +46,6 @@
                 </div>
                 <div class="field">
                     <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-                </div>
-                <div class="pass-link">
-                    <a href="#">Forgot password?</a>
                 </div>
                 <div class="field btn">
                     <div class="btn-layer"></div>
@@ -62,7 +59,7 @@
                     <div class="alert alert-danger">You have been logged out!</div>
                 </div>
                 <div class="signup-link">
-                    Not a member? <a href="/registration">Signup now</a>
+                     <a href="/registration" th:text="#{registration}"></a>
                 </div>
             </form>
             <form class="signup" th:action="@{/registration}" method="post">
