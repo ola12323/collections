@@ -34,9 +34,7 @@
                     <div class="col">
                         <div class="card card-custom bg-white border-white border-0">
                              <div class="card-custom-img" th:style="'background-image:url('+ ${col.getPhotosImagePath()}+');'"></div>
-                             <div class="card-custom-avatar">
-                                <img class="img-fluid"  th:src="@{${col.owner.getPhotosImagePath()}}" alt="Avatar" />
-                             </div>
+
                             <div class="card-body" style="overflow-y: auto">
                                  <h3 th:text="${col.name}">
                                  </h3>
