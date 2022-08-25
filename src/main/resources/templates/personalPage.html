@@ -32,24 +32,7 @@
 <h2 th:text="#{personalPageTitle}"></h2>
     <div class="mb-3">
         <h2 personalPageTitle th:text="${owner.getUsername()}"></h2>
-        <div class="card-custom-avatar">
-        <img class="img-fluid" style="left: 370px;top: 150px" th:src="@{${user.getPhotosImagePath()}}" alt="Avatar" />
-        </div>
     </div>
-<div th:if="${#authentication.name}==${owner.username} or ${#authorization.expression('hasAuthority(''ADMIN'')')}">
-<form th:action="@{'/personalPage/save/'+${#authentication.getPrincipal().getId()}}"
-      th:object="${user}" method="post"
-      enctype="multipart/form-data">
-    <div>
-
-        <label>Profile image: </label>
-        <input type="file" name="image" accept="image/png, image/jpeg" />
-
-    </div>
-    <p></p>
-    <td colspan="2"><button class="bn11" type="submit">Save</button> </td>
-</form>
-    <p style="margin-top: 100px"></p>
 
 <div th:if="${#authentication.name}==${owner.username} or ${#authorization.expression('hasAuthority(''ADMIN'')')}">
 
@@ -87,12 +70,6 @@
                                 <label for="selectTheme" th:text="#{colTheme}"></label>
                             </div>
                         </div>
-                        <div>
-
-                            <label>Photos: </label>
-                            <input type="file" name="image" accept="image/png, image/jpeg" />
-
-                        </div>
                         <div class="col-md">
                             <div class="form-floating">
                                 <button type="submit" class="button"th:text="#{create}"></button>
@@ -104,7 +81,6 @@
                 </form>
             </div>
 
-    <img src="../static/images/usrcol.png" th:src="@{/images/usrcol.png}" alt="Media Resource"/>
 <div th:each="col : ${collections}" >
     <p></p>
     <p></p>
@@ -112,9 +88,7 @@
             <div class="col">
     <div class="card card-custom bg-white border-white border-0">
         <div class="card-custom-img" th:style="'background-image:url('+ ${col.getPhotosImagePath()}+');'"></div>
-            <div class="card-custom-avatar">
-                <img class="img-fluid" th:src="@{${user.getPhotosImagePath()}}" alt="Avatar" />
-            </div>
+            
                  <div class="card-body" style="overflow-y: auto">
                         <h3 th:text="${col.name}">
                         </h3>
