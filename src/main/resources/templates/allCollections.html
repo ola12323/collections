@@ -7,6 +7,7 @@
     <link href='https://css.gg/lock-unlock.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="../static/css/navbar.css" th:href="@{/css/navbar.css}">
     <link rel="stylesheet" type="text/css" href="../static/css/card.css" th:href="@{/css/card.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/buttons.css" th:href="@{/css/buttons.css}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -43,11 +44,11 @@
                             </h4>
                              </div>
                         <div class="card-footer"style="background: inherit; border-color: inherit;">
-                            <a th:href="@{'/collection/' + ${col.id}}" class="btn btn-dark" th:text="#{showCol}"> </a>
-                         <a th:href="@{'/personalPage/' + ${col.owner.id}}" class="btn btn-dark"th:text="#{showOwner}"> </a>
+                            <a th:href="@{'/collection/' + ${col.id}}" class="button-68" th:text="#{showCol}"> </a>
+                         <a th:href="@{'/personalPage/' + ${col.owner.id}}" class="button-68"th:text="#{showOwner}"> </a>
                          <div th:if="${#authentication.name}==${col.owner.username} or ${#authorization.expression('hasAuthority(''ADMIN'')')}">
-                             <a class="btn btn-outline-dark" th:href="@{'/collectionEdit/'+${col.id}}" role="button"th:text="#{edit}"></a>
-                            <a class="btn btn-outline-dark" th:href="@{'/deleteCollection/' +${col.id}}" role="button"th:text="#{delete}"></a>
+                             <a class="button-59" th:href="@{'/collectionEdit/'+${col.id}}" role="button"th:text="#{edit}"></a>
+                            <a class="button-59" th:href="@{'/deleteCollection/' +${col.id}}" role="button"th:text="#{delete}"></a>
                         </div>
                         </div>
                     </div>

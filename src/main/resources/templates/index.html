@@ -10,6 +10,7 @@
     <link th:href="@{/css/navbar.css}" type="text/css">
     <link rel="stylesheet" type="text/css" href="../static/css/card.css" th:href="@{/css/card.css}">
     <link rel="stylesheet" type="text/css" href="../static/css/productcard.css" th:href="@{/css/productcard.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/buttons.css" th:href="@{/css/buttons.css}">
     <link rel="stylesheet" type="text/css" href="../static/css/axis.css" th:href="@{/css/axis.css}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -31,7 +32,7 @@
 
 
 <div class = "mb-4">
-    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
+    <button class="button-59" type="button" data-bs-toggle="collapse"
             data-bs-target="#showTags" aria-expanded="false" aria-controls="showTags"
         th:text="#{tagsCloud}">
 
@@ -58,8 +59,8 @@
                     </h4>
                 </div>
                 <div class="card-footer"style="background: inherit; border-color: inherit;">
-                    <a th:href="@{'/collection/' + ${col.id}}" class="btn btn-dark"th:text="#{showCol}"> </a>
-                    <a th:href="@{'/personalPage/' + ${col.owner.id}}" class="btn btn-dark"th:text="#{showOwner}"> </a>
+                    <a th:href="@{'/collection/' + ${col.id}}" class="button-68"th:text="#{showCol}"> </a>
+                    <a th:href="@{'/personalPage/' + ${col.owner.id}}" class="button-68"th:text="#{showOwner}"> </a>
                 </div>
             </div>
         </div>

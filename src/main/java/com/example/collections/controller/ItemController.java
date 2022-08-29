@@ -43,8 +43,8 @@ public class ItemController {
                       @PathVariable Collection col,
                       @Valid Item item,
                       BindingResult bindingResult,
-                      Model model,@RequestParam("image") MultipartFile multipartFile
-    ) throws IOException {
+                      Model model
+    )  {
 
         item.setCollection(col);
         if (bindingResult.hasErrors()) {
@@ -55,14 +55,6 @@ public class ItemController {
             model.addAttribute("items", collectionService.getItems(col));
             return "collection";
         } else {
-            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-            item.setPhotos(fileName);
-            //repos.setPhoto(fileName,collection.getId());
-            Item savedUser = repo.save(item);
-
-            String uploadDir = "user-photos/" + savedUser.getId();
-
-            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
             itemService.addItem(item);
             return "redirect:/collection/" + col.getId();
         }
@@ -91,22 +83,14 @@ public class ItemController {
     public String editCollection(@PathVariable Item currentItem,
                                  @Valid Item item,
                                  BindingResult bindingResult,
-                                 Model model,@RequestParam("image") MultipartFile multipartFile
-    ) throws IOException {
+                                 Model model
+    ) {
         if (bindingResult.hasErrors()) {
             Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);
             model.mergeAttributes(errorsMap);
             model.addAttribute("item", item);
             return "itemEditor";
         } else {
-            Optional<Item> memberFromDb = repo.findById(currentItem.getId());
-            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-            item.setPhotos(fileName);
-            repo.setPhoto(fileName,currentItem.getId());
-            Item savedUser = repo.save(currentItem);
-
-            String uploadDir = "user-photos/" + savedUser.getId();
-            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
             itemService.editItem(currentItem, item);
             return "redirect:/collection/" + currentItem.getCollection().getId();
         }

@@ -44,7 +44,7 @@ public class UserController {
     public String putCollection(@PathVariable User user,
                                 @Valid Collection collection,
                                 BindingResult bindingResult,
-                                Model model,@RequestParam("image") MultipartFile multipartFile
+                                Model model
     ) throws IOException {
         collection.setOwner(user);
         if (bindingResult.hasErrors()) {
@@ -53,14 +53,6 @@ public class UserController {
             model.addAttribute("collection", collection);
         } else {
 
-            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-            collection.setPhotos(fileName);
-            //repos.setPhoto(fileName,collection.getId());
-            Collection savedUser = repos.save(collection);
-
-            String uploadDir = "resources/static/images/user-photos/" + savedUser.getId();
-
-            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
             collectionService.saveCollection(collection);
         }
         model.addAttribute("collections", collectionService.getCollections(user));

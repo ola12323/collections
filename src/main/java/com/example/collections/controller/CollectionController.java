@@ -49,22 +49,14 @@ public class CollectionController {
     public String editCollection(@PathVariable Collection col,
                                  @Valid Collection collection,
                                  BindingResult bindingResult,
-                                 Model model,@RequestParam("image") MultipartFile multipartFile
-    ) throws IOException {
+                                 Model model
+    ) {
         if (bindingResult.hasErrors()) {
             Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);
             model.mergeAttributes(errorsMap);
             model.addAttribute("collection", collection);
             return "collectionEdit";
         } else {
-            Optional<Collection> memberFromDb = repo.findById(col.getId());
-            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-            col.setPhotos(fileName);
-            repo.setPhoto(fileName,col.getId());
-            Collection savedUser = repo.save(col);
-
-            String uploadDir = "user-photos/" + savedUser.getId();
-            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
             collectionService.editCollection(col, collection);
             return "redirect:/personalPage/" + col.getOwner().getId();
         }

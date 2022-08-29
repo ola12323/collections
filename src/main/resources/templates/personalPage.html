@@ -63,9 +63,9 @@
                         <div class="col-md">
                             <div class="form-floating">
                                 <select class="form-select" name="theme" id="selectTheme">
-                                    <option value="Alcohol">alcohol</option>
-                                    <option value="Games">games</option>
-                                    <option value="Books">books</option>
+                                    <option value="Alcohol" th:text="#{alcohol}"> </option>
+                                    <option value="Games"th:text="#{games}"></option>
+                                    <option value="Books"th:text="#{books}"></option>
                                 </select>
                                 <label for="selectTheme" th:text="#{colTheme}"></label>
                             </div>
@@ -88,7 +88,7 @@
             <div class="col">
     <div class="card card-custom bg-white border-white border-0">
         <div class="card-custom-img" th:style="'background-image:url('+ ${col.getPhotosImagePath()}+');'"></div>
-            
+
                  <div class="card-body" style="overflow-y: auto">
                         <h3 th:text="${col.name}">
                         </h3>
@@ -97,10 +97,10 @@
                     </h4>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <a th:href="@{'/collection/'+${col.id}}" class="btn btn-dark"th:text="#{showCol}"></a>
+                        <a th:href="@{'/collection/'+${col.id}}" class="button-68"th:text="#{showCol}"></a>
                         <div th:if="${#authentication.name}==${col.owner.username} or ${#authorization.expression('hasAuthority(''ADMIN'')')}">
-                                <a class="btn btn-outline-dark" th:href="@{'/collectionEdit/'+${col.id}}" role="button"th:text="#{edit}"></a>
-                                <a class="btn btn-outline-dark" th:href="@{'/deleteCollection/' +${col.id}}" role="button"th:text="#{delete}"></a>
+                                <a class="button-59" th:href="@{'/collectionEdit/'+${col.id}}" role="button"th:text="#{edit}"></a>
+                                <a class="button-59" th:href="@{'/deleteCollection/' +${col.id}}" role="button"th:text="#{delete}"></a>
                         </div>
                     </div>
             </div>

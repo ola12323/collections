@@ -49,7 +49,7 @@
                 </div>
                 <div class="field btn">
                     <div class="btn-layer"></div>
-                    <input type="submit" value="Login">
+                    <input type="submit" th:value="#{log}">
                 </div>
                 <div th:if="${param.error}">
                     <div class="alert alert-danger">Authentication error!</div>
@@ -75,7 +75,7 @@
                 <div class="field btn">
                     <div class="btn-layer"></div>
                     <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
-                    <input type="submit" value="Signup">
+                    <input type="submit" th:value="#{signup}">
                 </div>
 
             </form>

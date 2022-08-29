@@ -37,6 +37,7 @@
         <h2 th:text="#{comments}"></h2>
     <h3 th:text="${item.name}" />
         <div class="comments "id="comments">
+            <p style="height: 50px">
             <div th:each="comment: ${comments}">
             <div class="card mb-1">
                 <div class="card-body">
@@ -73,7 +74,9 @@
                 </div>
             </form>
         </div>
+        <p>
     </div>
+        <p>
     <script th:inline="javascript">
         var commentsArea = document.querySelector('#comments');
         var commentForm = document.querySelector('#commentsForm');
