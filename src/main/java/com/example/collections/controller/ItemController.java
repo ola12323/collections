@@ -115,10 +115,10 @@ public class ItemController {
         return "redirect:/collection/" + col.getId();
     }
 
-    @GetMapping("/showByTag/{tag}")
-    public String showByTag(@PathVariable Tag tag, Model model) {
+    @GetMapping("/showTag/{tag}")
+    public String showTag(@PathVariable Tag tag, Model model) {
         model.addAttribute("items", itemService.getItemsByTag(tag));
-        return "showByTag";
+        return "showTag";
     }
 
     @GetMapping("/likeItem/{item}")

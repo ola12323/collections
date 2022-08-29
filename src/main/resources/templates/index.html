@@ -39,7 +39,7 @@
     </button>
     <div class="collapse mb-4" id = "showTags">
         <div th:each="tag : ${tags}">
-            <a th:href="@{'/showByTag/' + ${tag.id}}" th:text="${tag.tagName}" />
+            <a th:href="@{'/showTag/' + ${tag.id}}" th:text="${tag.tagName}" />
         </div>
     </div>
 </div>
