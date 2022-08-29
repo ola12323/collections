@@ -36,7 +36,7 @@
         <tbody>
         <div th:each="user : ${users}" >
             <tr>
-                <td><a class="btn btn-outline-secondary" th:href="@{'/personalPage/'+${user.id}}" role="button" th:text="${user.username}"></a></td>
+                <td><a class="btn btn-outline-secondary" th:href="@{'/account/'+${user.id}}" role="button" th:text="${user.username}"></a></td>
                 <td th:text="${user.isAdmin} ? 'Yes' : 'No'"></td>
                 <td>
                     <form th:action="@{'/user/block/'+${user.id}}" method="post">

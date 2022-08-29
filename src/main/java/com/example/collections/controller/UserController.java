@@ -30,17 +30,17 @@ public class UserController {
     @Autowired
     private CollectionService collectionService;
 
-    @GetMapping("/personalPage/{user}")
+    @GetMapping("/account/{user}")
     public String personPage(@PathVariable User user, Model model) {
         model.addAttribute("collections", collectionService.getCollections(user));
         model.addAttribute("owner", user);
-        return "personalPage";
+        return "account";
     }
 
     @Autowired
     private CollectionsRepository repos;
     @PreAuthorize("hasAuthority('ADMIN') or #user.username == authentication.name")
-    @PostMapping("/personalPage/{user}")
+    @PostMapping("/account/{user}")
     public String putCollection(@PathVariable User user,
                                 @Valid Collection collection,
                                 BindingResult bindingResult,
@@ -58,14 +58,14 @@ public class UserController {
         model.addAttribute("collections", collectionService.getCollections(user));
         model.addAttribute("owner", user);
         model.addAttribute("collection", null);
-        return "personalPage";
+        return "account";
     }
 
     @Autowired
     private UserRepository repo;
 
 
-    @PostMapping("/personalPage/save/{user}")
+    @PostMapping("/account/save/{user}")
     public RedirectView saveUser(@PathVariable User user,
                                  @RequestParam("image") MultipartFile multipartFile) throws IOException {
 
@@ -79,7 +79,7 @@ public class UserController {
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
-        return new RedirectView("/personalPage/{user}", true);
+        return new RedirectView("/account/{user}", true);
     }
 
 }

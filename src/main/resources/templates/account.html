@@ -43,7 +43,7 @@
                 </button>
             </div>
             <div class="collapse show mb-4" id = "addNewCollection">
-                <form method="post" th:object="${collection}" th:action="@{'/personalPage/'+${#authentication.getPrincipal().getId()}}" enctype="multipart/form-data">
+                <form method="post" th:object="${collection}" th:action="@{'/account/'+${#authentication.getPrincipal().getId()}}" enctype="multipart/form-data">
                     <div class="row g-4 mb-5">
                         <div class="col-md">
                             <div class="form-floating">

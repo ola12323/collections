@@ -58,7 +58,7 @@ public class CollectionController {
             return "collectionEdit";
         } else {
             collectionService.editCollection(col, collection);
-            return "redirect:/personalPage/" + col.getOwner().getId();
+            return "redirect:/account/" + col.getOwner().getId();
         }
 
     }
@@ -67,7 +67,7 @@ public class CollectionController {
     @GetMapping("/deleteCollection/{col}")
     public String deleteCollection(@PathVariable Collection col) {
         collectionService.deleteCollection(col);
-        return "redirect:/personalPage/" + col.getOwner().getId();
+        return "redirect:/account/" + col.getOwner().getId();
     }
 
     @GetMapping("/allCollections")
