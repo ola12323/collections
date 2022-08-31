@@ -64,6 +64,18 @@ public class ItemService {
     public void editItem(Item item, Item newItem) {
         item.setName(newItem.getName());
         setTags(item, newItem.getTag());
+        item.setCustomBoolean1(newItem.getCustomBoolean1());
+        item.setCustomBoolean2(newItem.getCustomBoolean2());
+        item.setCustomBoolean3(newItem.getCustomBoolean3());
+        item.setCustomInteger1(newItem.getCustomInteger1());
+        item.setCustomInteger2(newItem.getCustomInteger2());
+        item.setCustomInteger3(newItem.getCustomInteger3());
+        item.setCustomString1(newItem.getCustomString1());
+        item.setCustomString2(newItem.getCustomString2());
+        item.setCustomString3(newItem.getCustomString3());
+        item.setCustomMultilineText1(newItem.getCustomMultilineText1());
+        item.setCustomMultilineText2(newItem.getCustomMultilineText2());
+        item.setCustomMultilineText3(newItem.getCustomMultilineText3());
         itemRepo.save(item);
     }
 

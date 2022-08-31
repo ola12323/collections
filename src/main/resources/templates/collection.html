@@ -71,7 +71,90 @@
                     <label for="putTag"th:text="#{itemTag}"></label>
                 </div>
             </div>
-            <div class="col-md">
+                <div class="form-outline mb-4" >
+                    <input type="text" id="optionalString1" class="form-control" value="customString1" name="customString1" />
+                    <label class="form-label" for="optionalString1">String1</label>
+                </div>
+
+                <!-- Optional String 2 -->
+                <div class="form-outline mb-4" >
+                    <input type="text" id="optionalString2" class="form-control" value="customString2" name="customString2" />
+                    <label class="form-label" for="optionalString2">String2</label>
+                </div>
+
+                <!-- Optional String 3 -->
+                <div class="form-outline mb-4" >
+                    <input type="text" id="optionalString3" class="form-control" value="customString3" name="customString3" />
+                    <label class="form-label" for="optionalString3">String3</label>
+                </div>
+
+
+                <!-- Optional Integer 1 -->
+                <div class="form-outline mb-4" >
+                    <input type="number" id="customInteger1" class="form-control" value="customInteger1" name="customInteger1" />
+                    <label class="form-label" for="customInteger1">Integer1</label>
+                </div>
+
+                <!-- Optional Integer 2 -->
+                <div class="form-outline mb-4" >
+                    <input type="number" id="customInteger2" class="form-control" value="customInteger2" name="customInteger2" />
+                    <label class="form-label" for="customInteger2">Integer2</label>
+                </div>
+
+                <!-- Optional Integer 3 -->
+                <div class="form-outline mb-4" >
+                    <input type="number" id="customInteger3" class="form-control" value="customInteger3" name="customInteger3" />
+                    <label class="form-label" for="customInteger3">Integer3</label>
+                </div>
+
+
+                <!-- Optional Boolean 1 -->
+                <div class="form-outline mb-4"  >
+                    <select class="form-select" aria-label="Default select example" value="customBoolean1" name="customBoolean1" >
+                        <option value="1" selected>True</option>
+                        <option value="0">False</option>
+                    </select>
+                    <label class="form-label">Boolean1</label>
+                </div>
+
+                <!-- Optional Boolean 2 -->
+                <div class="form-outline mb-4"  >
+                    <select class="form-select" aria-label="Default select example" value="customBoolean2" name="customBoolean2" >
+                        <option value="1" selected>True</option>
+                        <option value="0">False</option>
+                    </select>
+                    <label class="form-label">Boolean2</label>
+                </div>
+
+                <!-- Optional Boolean 3 -->
+                <div class="form-outline mb-4"  >
+                    <select class="form-select" aria-label="Default select example" value="customBoolean3" name="customBoolean3" >
+                        <option value="1" selected>True</option>
+                        <option value="0">False</option>
+                    </select>
+                    <label class="form-label">Boolean3</label>
+                </div>
+
+
+                <!-- Optional MultilineText 1 -->
+                <div class="form-outline mb-4" >
+                    <textarea type="text" rows="3" id="customMultilineText1" class="form-control" value="customMultilineText1" name="customMultilineText1"></textarea>
+                    <label class="form-label" for="customMultilineText1">MultilineText1</label>
+                </div>
+
+                <!-- Optional MultilineText 2 -->
+                <div class="form-outline mb-4" >
+                    <textarea type="text" rows="3" id="customMultilineText2" class="form-control" value="customMultilineText2" name="customMultilineText2"></textarea>
+                    <label class="form-label" for="customMultilineText2">MultilineText2</label>
+                </div>
+
+                <!-- Optional MultilineText 3 -->
+                <div class="form-outline mb-4" >
+                    <textarea type="text" rows="3" id="customMultilineText3" class="form-control" value="customMultilineText3" name="customMultilineText3"></textarea>
+                    <label class="form-label" for="customMultilineText3">MultilineText3</label>
+                </div>
+
+                <div class="col-md">
                 <div class="form-floating">
                     <button type="submit" class="button"th:text="#{add}"></button>
                 </div>
